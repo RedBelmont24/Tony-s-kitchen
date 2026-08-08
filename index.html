@@ -415,53 +415,6 @@ footer a:hover { color:var(--accent-deep); }
   </div>
 </section>
 
-<!--
-FAQ //
-
-<section class="section" id="faq">
-  <p class="section-label">Got Questions?</p>
-  <h2 class="section-title">FAQ</h2>
-  <div style="max-width:700px;display:flex;flex-direction:column;gap:.9rem;">
-
-    <div style="background:#fff;border:1px solid rgba(181,133,90,0.18);border-radius:14px;overflow:hidden;">
-      <button onclick="toggleFaq(this)" style="width:100%;padding:1.1rem 1.4rem;background:none;border:none;display:flex;justify-content:space-between;align-items:center;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:600;color:#2b1f14;cursor:pointer;text-align:left;">
-        How do I pay? <span>+</span>
-      </button>
-      <div style="max-height:0;overflow:hidden;transition:max-height .35s ease;">
-        <p style="padding:.1rem 1.4rem 1.1rem;color:#8a7060;font-size:.84rem;line-height:1.75;">We accept EFT and cash on delivery or pickup. Payment details will be confirmed on WhatsApp when you place your order.</p>
-      </div>
-    </div>
-
-    <div style="background:#fff;border:1px solid rgba(181,133,90,0.18);border-radius:14px;overflow:hidden;">
-      <button onclick="toggleFaq(this)" style="width:100%;padding:1.1rem 1.4rem;background:none;border:none;display:flex;justify-content:space-between;align-items:center;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:600;color:#2b1f14;cursor:pointer;text-align:left;">
-        How far in advance must I order? <span>+</span>
-      </button>
-      <div style="max-height:0;overflow:hidden;transition:max-height .35s ease;">
-        <p style="padding:.1rem 1.4rem 1.1rem;color:#8a7060;font-size:.84rem;line-height:1.75;">We recommend ordering at least 24 hours in advance. For custom cakes and large orders, please give us 48–72 hours notice.</p>
-      </div>
-    </div>
-
-    <div style="background:#fff;border:1px solid rgba(181,133,90,0.18);border-radius:14px;overflow:hidden;">
-      <button onclick="toggleFaq(this)" style="width:100%;padding:1.1rem 1.4rem;background:none;border:none;display:flex;justify-content:space-between;align-items:center;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:600;color:#2b1f14;cursor:pointer;text-align:left;">
-        Do you do custom cakes? <span>+</span>
-      </button>
-      <div style="max-height:0;overflow:hidden;transition:max-height .35s ease;">
-        <p style="padding:.1rem 1.4rem 1.1rem;color:#8a7060;font-size:.84rem;line-height:1.75;">Yes! WhatsApp us with your theme, size and date and we'll make it happen. Custom cakes are available for birthdays, events and special occasions.</p>
-      </div>
-    </div>
-
-    <div style="background:#fff;border:1px solid rgba(181,133,90,0.18);border-radius:14px;overflow:hidden;">
-      <button onclick="toggleFaq(this)" style="width:100%;padding:1.1rem 1.4rem;background:none;border:none;display:flex;justify-content:space-between;align-items:center;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:600;color:#2b1f14;cursor:pointer;text-align:left;">
-        Which areas do you deliver to? <span>+</span>
-      </button>
-      <div style="max-height:0;overflow:hidden;transition:max-height .35s ease;">
-        <p style="padding:.1rem 1.4rem 1.1rem;color:#8a7060;font-size:.84rem;line-height:1.75;">We deliver across Johannesburg and Pretoria. Delivery fee depends on your location and will be confirmed on WhatsApp.</p>
-      </div>
-    </div>
-
-  </div>
-</section>  -->
-
 <!-- Recview -->
 <section class="section" style="background:#f5ede2;" id="reviews">
   <p class="section-label">Happy Customers</p>
@@ -561,10 +514,18 @@ const treats = [
     ]
   },
 
-  { id:2,  name:"Oreo Cupcakes",          desc:"Cookies & cream dream —cupcake",          price:120, badge:"Popular",        emoji:"🖤", imgsrc: "Choclate cupcake .jpeg", cat:"treats" },
+  { id:2,  name:"Oreo Cupcakes",          desc:"Cookies & cream dream —cupcake",          price:120, badge:"Popular",        emoji:"🖤", imgsrc: "oreo cupcake.jpeg", cat:"treats" },
    {
-    id:3, name:"Cupcakes", desc:"Chocolate or Strawberry — your pick",
-    badge:"Popular", emoji:"🧁", cat:"treats",
+    id:3, name:"Strawberry Cupcakes", desc:"Chocolate or  — your pick",
+    badge:"Popular", emoji:"🧁", imgsrc: "strawberry cupcake.jpeg",  cat:"treats",
+    variants:[
+      { label:"6 Pack",  price:100 },
+      { label:"15 Pack", price:150 }
+    ]
+  },
+  {
+    id:17, name:"Chocolate Cupcakes", desc:"Chocolate cupcake",
+    badge:"Popular", emoji:"🧁", imgsrc: "Chocolate cupcake.jpeg", cat:"treats",
     variants:[
       { label:"6 Pack",  price:100 },
       { label:"15 Pack", price:150 }
@@ -576,17 +537,17 @@ const treats = [
 ];
 
 const cakes = [
-  { id:8,  name:"Cheesecake",       desc:"Creamy NY-style cheesecake slice",     price:180,   badge:null,        emoji:"🍰", cat:"treats" },
-  { id:9,  name:"Chocolate Cake",   desc:"Rich, moist dark chocolate layer cake",price:250,   badge:"Best Seller",emoji:"🍫", cat:"cakes" },
-  { id:10, name:"Oreo Cake",        desc:"Cookies & cream dream — whole cake",   price:220,   badge:"Popular",   emoji:"🖤", cat:"cakes" },
-  { id:11, name:"Carrot Cake",      desc:"Spiced carrot with cream cheese icing",price:200,   badge:null,        emoji:"🥕", cat:"cakes" },
+  { id:8,  name:"Cheesecake",       desc:"Creamy NY-style cheesecake slice",     price:180,   badge:null,        emoji:"🍰",imgsrc: "cheesecake.jpeg", cat:"treats" },
+  { id:9,  name:"Chocolate Cake",   desc:"Rich, moist dark chocolate layer cake",price:250,   badge:"Best Seller",emoji:"🍫",imgsrc: "Chocolate cake.jpeg", cat:"cakes" },
+  { id:10, name:"Oreo Cake",        desc:"Cookies & cream dream — whole cake",   price:220,   badge:"Popular",   emoji:"🖤",imgsrc: "oreo cake.jpeg", cat:"cakes" },
+  { id:11, name:"Carrot Cake",      desc:"Spiced carrot with cream cheese icing",price:200,   badge:null,        emoji:"🥕", imgsrc: "carrot cake.jpeg", cat:"cakes" },
   { id:12, name:"Sponge Cake",      desc:"Light, fluffy classic sponge",         price:200,   badge:null,        emoji:"🧈", cat:"cakes" },
-  { id:13, name:"Lemon Cake",       desc:"Zesty lemon drizzle cake",             price:200,   badge:null,        emoji:"🍋", cat:"cakes" },
-  { id:14, name:"Pineapple Cake",   desc:"Moist pineapple-infused cake",         price:200,   badge:null,        emoji:"🍍", cat:"cakes" },
+  { id:13, name:"Lemon Cake",       desc:"Zesty lemon drizzle cake",             price:200,   badge:null,        emoji:"🍋", imgsrc: "lemon cake.jpeg", cat:"cakes" },
+  { id:14, name:"Pineapple Cake",   desc:"Moist pineapple-infused cake",         price:200,   badge:null,        emoji:"🍍", imgsrc: "pineapple cake .jpeg", cat:"cakes" },
 ];
 
 const bigCakes = [
-  { id:15, name:"Big Oreo Cake",      desc:"custom design",                      price:750,  badge:null,         emoji:"🎂", cat:"bigcakes" },
+  { id:15, name:"Big Oreo Cake",      desc:"custom design",                      price:750,  badge:null,         emoji:"🎂", imgsrc: "big oreo cake .jpeg", cat:"bigcakes" },
   { id:16, name:"Big Chocolate Cake", desc:"custom design",                      price:700,  badge:null,         emoji:"🎂", cat:"bigcakes" },
 ];
 
