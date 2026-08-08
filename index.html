@@ -28,6 +28,17 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { background:var(--bg); color:var(--text); font-family:'Jost',sans-serif; overflow-x:hidden; }
+.variant-select {
+  width:100%;
+  padding:.4rem .6rem;
+  border-radius:8px;
+  border:1px solid var(--border);
+  font-family:'Jost',sans-serif;
+  font-size:.78rem;
+  color:var(--text);
+  background:#fff;
+  margin-bottom:.5rem;
+}
 
 /* TEXTURE OVERLAY */
 body::after {
@@ -365,6 +376,10 @@ footer a:hover { color:var(--accent-deep); }
 
   <div class="cat-label">🎂 Whole Cakes</div>
   <div class="products-grid" id="cakesGrid"></div>
+
+  <div class="cat-label">🎂 Big Cakes</div>
+` <div class="products-grid" id="bigCakesGrid"></div>
+
 </section>
 
 <div class="divider"></div>
@@ -537,57 +552,107 @@ FAQ //
 const WA_NUMBER = "27698266741";
 
 const treats = [
-  { id:1,  name:"Mini Donuts",      desc:"Fresh, glazed mini donuts",           price:100, badge:"Favourite", emoji:"🍩", cat:"treats" },
-  { id:2,  name:"Cheesecake",       desc:"Creamy NY-style cheesecake slice",     price:180, badge:null,        emoji:"🍰", cat:"treats" },
-  { id:3,  name:"Pudding",          desc:"Rich, warm homemade pudding",          price:130, badge:null,        emoji:"🍮", imgsrc: "Pudding.jpeg", cat:"treats" },
-  { id:4,  name:"Choco Cupcakes",   desc:"Chocolate or Strawberry — your pick",  price:150, badge:"Popular",   emoji:"🧁", imgsrc: "Choclate cupcake .jpeg", cat:"treats" },
-  { id:5,  name:"Samosas",          desc:"Crispy, golden, perfectly spiced",     price:80,  badge:null,        emoji:"🥟", imgsrc: "Samosa.jpeg", cat:"treats" },
-  { id:6,  name:"Rissois",          desc:"Portuguese-style prawn rissoles",      price:80,  badge:null,        emoji:"🥐", imgsrc: "resoge.jpeg", cat:"treats" },
+   {
+    id:1, name:"Mini Donuts", desc:"Fresh, glazed mini donuts",
+    badge:"Favourite", emoji:"🍩", cat:"treats",
+    variants:[
+      { label:"Chocolate (12)",  price:110 },
+      { label:"Strawberry (12)", price:125 }
+    ]
+  },
+
+  { id:2,  name:"Oreo Cupcakes",          desc:"Cookies & cream dream —cupcake",          price:120, badge:"Popular",        emoji:"🖤", imgsrc: "Choclate cupcake .jpeg", cat:"treats" },
+   {
+    id:3, name:"Cupcakes", desc:"Chocolate or Strawberry — your pick",
+    badge:"Popular", emoji:"🧁", cat:"treats",
+    variants:[
+      { label:"6 Pack",  price:100 },
+      { label:"15 Pack", price:150 }
+    ]
+  },
+  { id:5,  name:"Pudding",          desc:"Rich, warm homemade pudding",          price:160, badge:null,        emoji:"🍮", imgsrc: "Pudding.jpeg", cat:"treats" },
+  { id:6,  name:"Samosas",          desc:"Crispy, golden, perfectly spiced",     price:80,  badge:null,        emoji:"🥟", imgsrc: "Samosa.jpeg", cat:"treats" },
+  { id:7,  name:"Rissois",          desc:"Portuguese-style prawn rissoles",      price:80,  badge:null,        emoji:"🥐", imgsrc: "resoge.jpeg", cat:"treats" },
 ];
 
 const cakes = [
-  { id:7,  name:"Chocolate Cake",   desc:"Rich, moist dark chocolate layer cake",price:220, badge:"Best Seller",emoji:"🍫", cat:"cakes" },
-  { id:8,  name:"Oreo Cake",        desc:"Cookies & cream dream — whole cake",   price:200, badge:"Popular",   emoji:"🖤", cat:"cakes" },
-  { id:9,  name:"Carrot Cake",      desc:"Spiced carrot with cream cheese icing",price:180, badge:null,        emoji:"🥕", cat:"cakes" },
+  { id:8,  name:"Cheesecake",       desc:"Creamy NY-style cheesecake slice",     price:180,   badge:null,        emoji:"🍰", cat:"treats" },
+  { id:9,  name:"Chocolate Cake",   desc:"Rich, moist dark chocolate layer cake",price:250,   badge:"Best Seller",emoji:"🍫", cat:"cakes" },
+  { id:10, name:"Oreo Cake",        desc:"Cookies & cream dream — whole cake",   price:220,   badge:"Popular",   emoji:"🖤", cat:"cakes" },
+  { id:11, name:"Carrot Cake",      desc:"Spiced carrot with cream cheese icing",price:200,   badge:null,        emoji:"🥕", cat:"cakes" },
+  { id:12, name:"Sponge Cake",      desc:"Light, fluffy classic sponge",         price:200,   badge:null,        emoji:"🧈", cat:"cakes" },
+  { id:13, name:"Lemon Cake",       desc:"Zesty lemon drizzle cake",             price:200,   badge:null,        emoji:"🍋", cat:"cakes" },
+  { id:14, name:"Pineapple Cake",   desc:"Moist pineapple-infused cake",         price:200,   badge:null,        emoji:"🍍", cat:"cakes" },
+];
+
+const bigCakes = [
+  { id:15, name:"Big Oreo Cake",      desc:"custom design",                      price:750,  badge:null,         emoji:"🎂", cat:"bigcakes" },
+  { id:16, name:"Big Chocolate Cake", desc:"custom design",                      price:700,  badge:null,         emoji:"🎂", cat:"bigcakes" },
 ];
 
 let cart = [];
 
 function renderGrid(items, gridId) {
-  document.getElementById(gridId).innerHTML = items.map(p => `
-    <div class="product-card">
-      ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
-      <div class="product-img-wrap">
+  document.getElementById(gridId).innerHTML = items.map(p => {
+    const hasVariants = Array.isArray(p.variants);
+    const footer = hasVariants
+  ? `
+    <select id="variant-${p.id}" class="variant-select" onchange="updatePrice(${p.id})">
+      ${p.variants.map((v,i) => `<option value="${i}">${v.label}</option>`).join("")}
+    </select>
+    <div class="product-footer">
+      <span class="price" id="price-${p.id}">R${p.variants[0].price}</span>
+      <button class="add-btn" onclick="addToCart(${p.id})">Add +</button>
+    </div>
+  `
+  : `
+    <span class="price">R${p.price}</span>
+    <button class="add-btn" onclick="addToCart(${p.id})">Add +</button>
+  `;
+
+    return `
+      <div class="product-card">
+        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+        <div class="product-img-wrap">
           ${p.imgsrc
             ? `<img src="${p.imgsrc}" alt="${p.name}" class="product-img" />`
             : `<div class="emoji-big">${p.emoji}</div>`}
         </div>
-      <div class="product-info">
-        <h4>${p.name}</h4>
-        <p class="product-desc">${p.desc}</p>
-        <div class="product-footer">
-          <span class="price">R${p.price}</span>
-          <button class="add-btn" onclick="addToCart(${p.id})">Add +</button>
+        <div class="product-info">
+          <h4>${p.name}</h4>
+          <p class="product-desc">${p.desc}</p>
+          <div class="product-footer">${footer}</div>
         </div>
       </div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 }
 
 window.addEventListener("DOMContentLoaded", () => {
   renderGrid(treats, "treatsGrid");
   renderGrid(cakes, "cakesGrid");
+  renderGrid(bigCakes, "bigCakesGrid");
 });
 
-const allProducts = [...treats, ...cakes];
+const allProducts = [...treats, ...cakes, ...bigCakes ];
 
 function addToCart(id) {
   const p = allProducts.find(x => x.id === id);
-  const ex = cart.find(x => x.id === id);
+  let name = p.name, price = p.price, cartId = p.id;
+
+  if (Array.isArray(p.variants)) {
+    const select = document.getElementById(`variant-${id}`);
+    const variant = p.variants[select.value];
+    name = `${p.name} (${variant.label})`;
+    price = variant.price;
+    cartId = `${p.id}-${select.value}`;
+  }
+
+  const ex = cart.find(x => x.id === cartId);
   if (ex) ex.qty++;
-  else cart.push({...p, qty:1});
+  else cart.push({ id:cartId, name, price, emoji:p.emoji, qty:1 });
   updateCart();
-  showToast(`${p.emoji} ${p.name} added!`);
+  showToast(`${p.emoji} ${name} added!`);
 }
 
 function changeQty(id, delta) {
@@ -596,6 +661,13 @@ function changeQty(id, delta) {
   item.qty += delta;
   if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
   updateCart();
+}
+
+function updatePrice(id) {
+  const p = allProducts.find(x => x.id === id);
+  const select = document.getElementById(`variant-${id}`);
+  const variant = p.variants[select.value];
+  document.getElementById(`price-${id}`).textContent = `R${variant.price}`;
 }
 
 function updateCart() {
