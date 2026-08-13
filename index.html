@@ -3,8 +3,24 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Homemade cakes, cupcakes, donuts & savoury treats made fresh in Johannesburg & Pretoria, South Africa. Order in seconds via WhatsApp — custom cakes welcome." />
+<meta name="keywords" content="Tony's Kitchen, homemade cakes Johannesburg, custom cakes Johannesburg & Pretoria, bakery WhatsApp order, South Africa bakery" />
+
+<!-- Open Graph: controls how the link looks when shared on WhatsApp, Facebook, Instagram -->
+<meta property="og:title" content="Tony's Kitchen | Homemade with Love" />
+<meta property="og:description" content="Homemade cakes, cupcakes, donuts & savoury treats made fresh in South Africa. Order via WhatsApp." />
+<meta property="og:image" content="https://tonyskitchen.co.za/tk-logo.png" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tonyskitchen.co.za" />
+
+<!-- Twitter Card: same idea, for X/Twitter previews -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Tony's Kitchen | Homemade with Love" />
+<meta name="twitter:description" content="Homemade cakes & treats, made fresh in South Africa. Order via WhatsApp." />
+<meta name="twitter:image" content="https://tonyskitchen.co.za/tk-logo.png" />
 <title>Tony's Kitchen | Homemade with Love</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --bg: #fdf8f3;
@@ -313,7 +329,7 @@ footer a:hover { color:var(--accent-deep); }
 </style>
 </head>]
 
-<a href="https://wa.me/27683646136" target="_blank"
+<a href="https://wa.me/27698266741" target="_blank"
    style="position:fixed;bottom:2rem;right:2rem;z-index:700;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 4px 20px rgba(37,211,102,.4);text-decoration:none;transition:transform .25s;"
    onmouseover="this.style.transform='scale(1.1)'"
    onmouseout="this.style.transform='scale(1)'">
@@ -346,7 +362,7 @@ footer a:hover { color:var(--accent-deep); }
   <div class="hero-deco deco2"></div>
   <div class="hero-deco deco3"></div>
   <div class="hero-content">
-    <img src="TK Logo.png" alt="Tony's Kitchen"
+    <img src="tk-logo.png" alt="Tony's Kitchen"
      style="height:200px; width: 200px; align-items:center;" />
     <h1>Baked with love,<br><em>made for you.</em></h1>
     <p class="hero-sub">Homemade cakes, desserts & savoury treats — crafted fresh in South Africa. Order via WhatsApp in seconds.</p>
@@ -462,9 +478,9 @@ footer a:hover { color:var(--accent-deep); }
 
 <!-- FOOTER -->
 <footer id="contact">
-  <img src="TK Logo.png" alt="Tony's Kitchen" style="height:70px; width:auto; margin-bottom:.8rem;" />
+  <img src="tk-logo.png" alt="Tony's Kitchen" style="height:70px; width:auto; margin-bottom:.8rem;" />
   <p>Homemade with love · South Africa</p>
-  <p>Orders & enquiries: <a href="https://wa.me/27683646136">WhatsApp us</a></p>
+  <p>Orders & enquiries: <a href="https://wa.me/27698266741">WhatsApp us</a></p>
   <p>
   <a href="https://www.tiktok.com/@thefreshesbakedgoods" target="_blank">TikTok</a> &nbsp;·&nbsp;
   <a href="https://www.instagram.com/tonys_baked_goods" target="_blank">Instagram</a>
@@ -506,7 +522,7 @@ const WA_NUMBER = "27698266741";
 
 const treats = [
    {
-    id:1, name:"Mini Donuts", desc:"Fresh, glazed mini donuts",
+    id:1, name:"Mini Donuts", desc:"Soft,fluffy bite-sized donuts, freshly made and perfect for a sweet treat",
     badge:"Favourite", emoji:"🍩", cat:"treats",
     variants:[
       { label:"Chocolate (12)",  price:110 },
@@ -514,41 +530,42 @@ const treats = [
     ]
   },
 
-  { id:2,  name:"Oreo Cupcakes",          desc:"Cookies & cream dream —cupcake",          price:120, badge:"Popular",        emoji:"🖤", imgsrc: "oreo cupcake.jpeg", cat:"treats" },
+  { id:2,  name:"Oreo Cupcakes", desc:"Moidt chocolate cupckaes topped with creamy Oreo frosting and delicious finish",
+     price:120, badge:"Popular",        emoji:"🖤", imgsrc: "oreo_cupcake.jpeg", cat:"treats" },
    {
-    id:3, name:"Strawberry Cupcakes", desc:"Chocolate or  — your pick",
-    badge:"Popular", emoji:"🧁", imgsrc: "strawberry cupcake.jpeg",  cat:"treats",
+    id:3, name:"Strawberry Cupcakes", desc:"Soft, fluffy cupacakes bursting with sweet flavour and topped with sweeet creammy strawberry frosting",
+    badge:"Popular", emoji:"🧁", imgsrc: "strawberry_cupcake.jpeg",  cat:"treats",
     variants:[
       { label:"6 Pack",  price:100 },
       { label:"15 Pack", price:150 }
     ]
   },
   {
-    id:17, name:"Chocolate Cupcakes", desc:"Chocolate cupcake",
-    badge:"Popular", emoji:"🧁", imgsrc: "Chocolate cupcake.jpeg", cat:"treats",
+    id:17, name:"Chocolate Cupcakes", desc:"Moist chocolate cupcakes with smooth , indugent chocolate frosting",
+    badge:"Popular", emoji:"🧁", imgsrc: "Chocolate_cupcake.jpeg", cat:"treats",
     variants:[
       { label:"6 Pack",  price:100 },
       { label:"15 Pack", price:150 }
     ]
   },
-  { id:5,  name:"Pudding",          desc:"Rich, warm homemade pudding",          price:160, badge:null,        emoji:"🍮", imgsrc: "Pudding.jpeg", cat:"treats" },
-  { id:6,  name:"Samosas",          desc:"Crispy, golden, perfectly spiced",     price:80,  badge:null,        emoji:"🥟", imgsrc: "Samosa.jpeg", cat:"treats" },
-  { id:7,  name:"Rissois",          desc:"Portuguese-style prawn rissoles",      price:80,  badge:null,        emoji:"🥐", imgsrc: "resoge.jpeg", cat:"treats" },
+  { id:5,  name:"Pudding",          desc:"Silky smooth Portugese-style caramel flan with a rich creamy texture",          price:160, badge:null,        emoji:"🍮", imgsrc: "Pudding.jpeg", cat:"treats" },
+  { id:6,  name:"Samosas",          desc:"Crispy golden pastry filled with a deliciously seasoned savoury filling",     price:80,  badge:null,        emoji:"🥟", imgsrc: "Samosa.jpeg", cat:"treats" },
+  { id:7,  name:"Rissois",          desc:"Golden, crispy Portuguese pastries filled with a creammy, flavouring of prawn filling",      price:80,  badge:null,        emoji:"🥐", imgsrc: "resoge.jpeg", cat:"treats" },
 ];
 
 const cakes = [
-  { id:8,  name:"Cheesecake",       desc:"Creamy NY-style cheesecake slice",     price:180,   badge:null,        emoji:"🍰",imgsrc: "cheesecake.jpeg", cat:"treats" },
-  { id:9,  name:"Chocolate Cake",   desc:"Rich, moist dark chocolate layer cake",price:250,   badge:"Best Seller",emoji:"🍫",imgsrc: "Chocolate cake.jpeg", cat:"cakes" },
-  { id:10, name:"Oreo Cake",        desc:"Cookies & cream dream — whole cake",   price:220,   badge:"Popular",   emoji:"🖤",imgsrc: "oreo cake.jpeg", cat:"cakes" },
-  { id:11, name:"Carrot Cake",      desc:"Spiced carrot with cream cheese icing",price:200,   badge:null,        emoji:"🥕", imgsrc: "carrot cake.jpeg", cat:"cakes" },
-  { id:12, name:"Sponge Cake",      desc:"Light, fluffy classic sponge",         price:200,   badge:null,        emoji:"🧈", cat:"cakes" },
-  { id:13, name:"Lemon Cake",       desc:"Zesty lemon drizzle cake",             price:200,   badge:null,        emoji:"🍋", imgsrc: "lemon cake.jpeg", cat:"cakes" },
-  { id:14, name:"Pineapple Cake",   desc:"Moist pineapple-infused cake",         price:200,   badge:null,        emoji:"🍍", imgsrc: "pineapple cake .jpeg", cat:"cakes" },
+  { id:8,  name:"Cheesecake",       desc:"Creamy, smopth chessecake with a rich flavour and a perfetly balanced sweet finish",     price:180,   badge:null,        emoji:"🍰",imgsrc: "cheesecake.jpeg", cat:"treats" },
+  { id:9,  name:"Chocolate Cake",   desc:"Moist, rich chocolate cake layered with smooth chocolate goodness",price:250,   badge:"Best Seller",emoji:"🍫",imgsrc: "Chocolate_cake.jpeg", cat:"cakes" },
+  { id:10, name:"Oreo Cake",        desc:"Soft, idulgent ckae packed with oreo flvour and creamy Oreo frosting",   price:220,   badge:"Popular",   emoji:"🖤",imgsrc: "oreo_cake.jpeg", cat:"cakes" },
+  { id:11, name:"Carrot Cake",      desc:"Moist, lighty spiced carrot cake with a deliously creamy frosting",price:200,   badge:null,        emoji:"🥕", imgsrc: "carrot_cake.jpeg", cat:"cakes" },
+  { id:12, name:"Sponge Cake",      desc:"Light,soft and fluffy sponge cake with a delicate sweetness",         price:200,   badge:null,        emoji:"🧈", cat:"cakes" },
+  { id:13, name:"Lemon Cake",       desc:"Soft, mosit lemon cake with a refreshing citurs flavour",             price:200,   badge:null,        emoji:"🍋", imgsrc: "lemon_cake.jpeg", cat:"cakes" },
+  { id:14, name:"Pineapple Cake",   desc:"MOit, fruity pineaplle cake with a sweet and refeshing tropical flavour",         price:200,   badge:null,        emoji:"🍍", imgsrc: "pineapple_cake .jpeg", cat:"cakes" },
 ];
 
 const bigCakes = [
-  { id:15, name:"Big Oreo Cake",      desc:"custom design",                      price:750,  badge:null,         emoji:"🎂", imgsrc: "big oreo cake .jpeg", cat:"bigcakes" },
-  { id:16, name:"Big Chocolate Cake", desc:"custom design",                      price:700,  badge:null,         emoji:"🎂", cat:"bigcakes" },
+  { id:15, name:"Big Oreo Cake",      desc:"A generoulsy sized Oreo cake, layered with creamy Oreo goodness perfet for celebrations",                      price:750,  badge:null,         emoji:"🎂", imgsrc: "big _oreo_cake .jpeg", cat:"bigcakes" },
+  { id:16, name:"Big Chocolate Cake", desc:"A large richand indulgent chocolate ckae made to satisfy every chocolate lovers",                      price:700,  badge:null,         emoji:"🎂", cat:"bigcakes" },
 ];
 
 let cart = [];
